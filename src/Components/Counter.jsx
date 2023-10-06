@@ -5,6 +5,7 @@ import {
   decrement,
   deleteCounter,
   increment,
+  resetCounter,
   setCounter,
 } from "../redux/counterReducer";
 import styles from "./Counter.module.css"; // Import the CSS module
@@ -29,7 +30,7 @@ const Counter = ({ index }) => {
   };
 
   const reset = () => {
-    dispatch(setCounter({ index, value: 0 }));
+    dispatch(resetCounter({ index }));
   };
 
   const handleSetCount = () => {

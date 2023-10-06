@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const counterSlice = createSlice({
   name: "counter",
   initialState: {
-    counters: [{ count: 0 }],
+    counters: [{ count: 0, name: "Counter" }],
   },
   reducers: {
     addCounter: (state) => {
@@ -31,6 +31,11 @@ const counterSlice = createSlice({
     deleteCounter: (state, action) => {
       const { index } = action.payload;
       state.counters.splice(index, 1);
+    },
+    resetCounter: (state, action) => {
+      const { index } = action.payload;
+      state.counters[index].name = "Counter";
+      state.counters[index].count = 0;
     }
   },
 });
@@ -41,7 +46,8 @@ export const {
   decrement,
   setCounter,
   changeCounterName,
-  deleteCounter
+  deleteCounter,
+  resetCounter
 } = counterSlice.actions;
 
 export default counterSlice.reducer;
